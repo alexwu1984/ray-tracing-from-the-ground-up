@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Window.hpp"
+#include <chrono>
 
 class Window_NOTHREAD : public Window{
 private:
@@ -8,8 +9,7 @@ private:
     SDL_Renderer* renderer;
     SDL_Texture* texture;
     SDL_Event event;
-    struct timespec start, finish;
-	double elapsed = 1000.0;
+    std::chrono::steady_clock::time_point tp_start = std::chrono::high_resolution_clock::now();
     
 public:
     Window_NOTHREAD(int width, int height);

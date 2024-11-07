@@ -1,7 +1,8 @@
 #pragma once
 
-void World::build(void) {
-	int num_samples = 16;
+void World::build(void) 
+{
+	int num_samples = 5;
 	
 	vp.set_hres(600);	  		
 	vp.set_vres(600);        

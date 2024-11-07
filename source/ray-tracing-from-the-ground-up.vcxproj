@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BRDF\BRDF.cpp" />
+    <ClCompile Include="BRDF\GlossySpecular.cpp" />
+    <ClCompile Include="BRDF\Lambertian.cpp" />
+    <ClCompile Include="BRDF\PerfectSpecular.cpp" />
+    <ClCompile Include="Cameras\Camera.cpp" />
+    <ClCompile Include="Cameras\Orthographic.cpp" />
+    <ClCompile Include="Cameras\Pinhole.cpp" />
+    <ClCompile Include="Cameras\ThinLens.cpp" />
+    <ClCompile Include="GeometricObjects\BBox.cpp" />
+    <ClCompile Include="GeometricObjects\Box.cpp" />
+    <ClCompile Include="GeometricObjects\Compound.cpp" />
+    <ClCompile Include="GeometricObjects\Cylinder.cpp" />
+    <ClCompile Include="GeometricObjects\Disk.cpp" />
+    <ClCompile Include="GeometricObjects\FlatMeshTriangle.cpp" />
+    <ClCompile Include="GeometricObjects\GeometricObject.cpp" />
+    <ClCompile Include="GeometricObjects\Grid.cpp" />
+    <ClCompile Include="GeometricObjects\Mesh.cpp" />
+    <ClCompile Include="GeometricObjects\MeshTriangle.cpp" />
+    <ClCompile Include="GeometricObjects\OpenCylinder.cpp" />
+    <ClCompile Include="GeometricObjects\Plane.cpp" />
+    <ClCompile Include="GeometricObjects\Rectangle.cpp" />
+    <ClCompile Include="GeometricObjects\SmoothMeshTriangle.cpp" />
+    <ClCompile Include="GeometricObjects\Sphere.cpp" />
+    <ClCompile Include="GeometricObjects\Torus.cpp" />
+    <ClCompile Include="GeometricObjects\Triangle.cpp" />
+    <ClCompile Include="Light\Ambient.cpp" />
+    <ClCompile Include="Light\AmbientOccluder.cpp" />
+    <ClCompile Include="Light\AreaLight.cpp" />
+    <ClCompile Include="Light\Directional.cpp" />
+    <ClCompile Include="Light\Light.cpp" />
+    <ClCompile Include="Light\PointLight.cpp" />
+    <ClCompile Include="Main\main.cpp" />
+    <ClCompile Include="Materials\Emissive.cpp" />
+    <ClCompile Include="Materials\Material.cpp" />
+    <ClCompile Include="Materials\Matte.cpp" />
+    <ClCompile Include="Materials\Phong.cpp" />
+    <ClCompile Include="Materials\Reflective.cpp" />
+    <ClCompile Include="Samplers\Jittered.cpp" />
+    <ClCompile Include="Samplers\MultiJittered.cpp" />
+    <ClCompile Include="Samplers\NRooks.cpp" />
+    <ClCompile Include="Samplers\Regular.cpp" />
+    <ClCompile Include="Samplers\Sampler.cpp" />
+    <ClCompile Include="Tracers\AreaLighting.cpp" />
+    <ClCompile Include="Tracers\RayCast.cpp" />
+    <ClCompile Include="Tracers\Tracer.cpp" />
+    <ClCompile Include="Tracers\Whitted.cpp" />
+    <ClCompile Include="Utilities\Matrix.cpp" />
+    <ClCompile Include="Utilities\Normal.cpp" />
+    <ClCompile Include="Utilities\Point2D.cpp" />
+    <ClCompile Include="Utilities\Point3D.cpp" />
+    <ClCompile Include="Utilities\Ray.cpp" />
+    <ClCompile Include="Utilities\RGBColor.cpp" />
+    <ClCompile Include="Utilities\ShadeRec.cpp" />
+    <ClCompile Include="Utilities\Vector3D.cpp" />
+    <ClCompile Include="Window\Window-NOTHREAD.cpp" />
+    <ClCompile Include="Window\Window-THREAD.cpp" />
+    <ClCompile Include="Window\Window.cpp" />
+    <ClCompile Include="World\ViewPlane.cpp" />
+    <ClCompile Include="World\World.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BRDF\BRDF.hpp" />
+    <ClInclude Include="BRDF\GlossySpecular.hpp" />
+    <ClInclude Include="BRDF\Lambertian.hpp" />
+    <ClInclude Include="BRDF\PerfectSpecular.hpp" />
+    <ClInclude Include="build\BuildAmbientOcclusion.hpp" />
+    <ClInclude Include="build\BuildAreaLight.hpp" />
+    <ClInclude Include="build\BuildBBCoverPic.hpp" />
+    <ClInclude Include="build\BuildBBCoverPicLight.hpp" />
+    <ClInclude Include="build\BuildBox.hpp" />
+    <ClInclude Include="build\BuildGlossy.hpp" />
+    <ClInclude Include="build\BuildHorizontalPlane.hpp" />
+    <ClInclude Include="build\BuildMirrorHall.hpp" />
+    <ClInclude Include="build\BuildMultipleObjects.hpp" />
+    <ClInclude Include="build\BuildReflective.hpp" />
+    <ClInclude Include="build\BuildShadedTest.hpp" />
+    <ClInclude Include="build\BuildShadowsTest.hpp" />
+    <ClInclude Include="build\BuildSimpleMesh.hpp" />
+    <ClInclude Include="build\BuildSingleSphere.hpp" />
+    <ClInclude Include="build\BuildSingleSphereLight.hpp" />
+    <ClInclude Include="build\BuildSinusoid.hpp" />
+    <ClInclude Include="build\BuildSphereGrid.hpp" />
+    <ClInclude Include="build\BuildSpheresQueue.hpp" />
+    <ClInclude Include="Cameras\Camera.hpp" />
+    <ClInclude Include="Cameras\Orthographic.hpp" />
+    <ClInclude Include="Cameras\Pinhole.hpp" />
+    <ClInclude Include="Cameras\ThinLens.hpp" />
+    <ClInclude Include="GeometricObjects\BBox.hpp" />
+    <ClInclude Include="GeometricObjects\Box.hpp" />
+    <ClInclude Include="GeometricObjects\Compound.hpp" />
+    <ClInclude Include="GeometricObjects\Cylinder.hpp" />
+    <ClInclude Include="GeometricObjects\Disk.hpp" />
+    <ClInclude Include="GeometricObjects\FlatMeshTriangle.hpp" />
+    <ClInclude Include="GeometricObjects\GeometricObject.hpp" />
+    <ClInclude Include="GeometricObjects\Grid.hpp" />
+    <ClInclude Include="GeometricObjects\Mesh.hpp" />
+    <ClInclude Include="GeometricObjects\MeshTriangle.hpp" />
+    <ClInclude Include="GeometricObjects\OpenCylinder.hpp" />
+    <ClInclude Include="GeometricObjects\Plane.hpp" />
+    <ClInclude Include="GeometricObjects\Rectangle.hpp" />
+    <ClInclude Include="GeometricObjects\SmoothMeshTriangle.hpp" />
+    <ClInclude Include="GeometricObjects\Sphere.hpp" />
+    <ClInclude Include="GeometricObjects\Torus.hpp" />
+    <ClInclude Include="GeometricObjects\Triangle.hpp" />
+    <ClInclude Include="Light\Ambient.hpp" />
+    <ClInclude Include="Light\AmbientOccluder.hpp" />
+    <ClInclude Include="Light\AreaLight.hpp" />
+    <ClInclude Include="Light\Directional.hpp" />
+    <ClInclude Include="Light\Light.hpp" />
+    <ClInclude Include="Light\PointLight.hpp" />
+    <ClInclude Include="Materials\Emissive.hpp" />
+    <ClInclude Include="Materials\Material.hpp" />
+    <ClInclude Include="Materials\Matte.hpp" />
+    <ClInclude Include="Materials\Phong.hpp" />
+    <ClInclude Include="Materials\Reflective.hpp" />
+    <ClInclude Include="Samplers\Jittered.hpp" />
+    <ClInclude Include="Samplers\MultiJittered.hpp" />
+    <ClInclude Include="Samplers\NRooks.hpp" />
+    <ClInclude Include="Samplers\Regular.hpp" />
+    <ClInclude Include="Samplers\Sampler.hpp" />
+    <ClInclude Include="Tracers\AreaLighting.hpp" />
+    <ClInclude Include="Tracers\RayCast.hpp" />
+    <ClInclude Include="Tracers\Tracer.hpp" />
+    <ClInclude Include="Tracers\Whitted.hpp" />
+    <ClInclude Include="Utilities\Constants.hpp" />
+    <ClInclude Include="Utilities\Debug.hpp" />
+    <ClInclude Include="Utilities\Maths.hpp" />
+    <ClInclude Include="Utilities\Matrix.hpp" />
+    <ClInclude Include="Utilities\Normal.hpp" />
+    <ClInclude Include="Utilities\Point2D.hpp" />
+    <ClInclude Include="Utilities\Point3D.hpp" />
+    <ClInclude Include="Utilities\Ray.hpp" />
+    <ClInclude Include="Utilities\RGBColor.hpp" />
+    <ClInclude Include="Utilities\ShadeRec.hpp" />
+    <ClInclude Include="Utilities\Vector3D.hpp" />
+    <ClInclude Include="Window\Window-NOTHREAD.hpp" />
+    <ClInclude Include="Window\Window-THREAD.hpp" />
+    <ClInclude Include="Window\Window.hpp" />
+    <ClInclude Include="World\ViewPlane.hpp" />
+    <ClInclude Include="World\World.hpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{e37cb77c-bae0-4471-bb1c-3f8f2ba209eb}</ProjectGuid>
+    <RootNamespace>raytracingfromthegroundup</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>../bin/debug</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>../SDL2-2.30.9/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../SDL2-2.30.9/lib/x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>../SDL2-2.30.9/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>SDL2.lib;SDL2.lib../SDL2-2.30.9/lib/x64;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../SDL2-2.30.9/lib/x64</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -17,12 +17,6 @@ void Orthographic::render_scene(World& w){
 
 	w.openWindow(vp->vres, vp->hres);
 
-	// TIME MANAGER
-	struct timespec start_processing;
-	struct timespec start_displaying;
-	struct timespec now;
-	clock_gettime(CLOCK_MONOTONIC, &start_processing);
-
 	float time_displaying = 0;
 	
 	for (int r = 0; r < vp->vres; r++) {			// up
@@ -38,9 +32,7 @@ void Orthographic::render_scene(World& w){
 				ray.o = Point3D(pp.x, pp.y, zw);
 				pixel_color += w.tracer_ptr->trace_ray(ray, depth);
 			}
-			pixel_color /= vp->num_samples;
-				
-			clock_gettime(CLOCK_MONOTONIC, &start_displaying); 			
+			pixel_color /= vp->num_samples;	
 			
 			// DISPLAYING STUFF
 			w.display_pixel(r, c, pixel_color);
@@ -48,13 +40,8 @@ void Orthographic::render_scene(World& w){
 			if(!w.window->isOpen()){
 				return;
 			}
-			clock_gettime(CLOCK_MONOTONIC, &now); 			
-			time_displaying += (now.tv_sec - start_displaying.tv_sec);
-			time_displaying += (now.tv_nsec - start_displaying.tv_nsec)/1000000000.0;
 		}	
 	}
-	printf("\r\nRendering completed.\nTotal processing time: %.4f seconds.\nTotal displaying time: %.4f seconds.\n", 
-		(now.tv_sec - start_processing.tv_sec)+((now.tv_nsec - start_processing.tv_nsec)/1000000000.0) - time_displaying, time_displaying);
 	while(w.window->isOpen()){
 		w.window->update();
 	}

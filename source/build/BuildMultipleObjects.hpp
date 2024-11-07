@@ -3,7 +3,7 @@ void World::build(void) {
 	vp.set_vres(300);
 	vp.set_pixel_size(1.0);
 	
-	tracer_ptr = new MultipleObjects(this); 
+	//tracer_ptr = new MultipleObjects(this); 
 	
 	background_color = RGBColor(0);
 	

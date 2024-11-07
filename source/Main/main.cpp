@@ -1,6 +1,8 @@
 #include "../World/World.hpp"
+#include <windows.h>
 
-int main(){
+int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmdshow)
+{
     World w;
     w.build();
     debug_print("Build finished.\n");

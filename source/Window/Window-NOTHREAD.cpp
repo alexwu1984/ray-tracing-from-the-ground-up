@@ -18,18 +18,17 @@ void Window_NOTHREAD::init(){
 		SDL_TEXTUREACCESS_STREAMING, w, h);
 
     running = true;
-    clock_gettime(CLOCK_MONOTONIC, &start);
+    tp_start = std::chrono::high_resolution_clock::now();
 }
 
 void Window_NOTHREAD::update(){
 
-    clock_gettime(CLOCK_MONOTONIC, &finish);
-    elapsed = (finish.tv_sec - start.tv_sec);
-    elapsed += (finish.tv_nsec - start.tv_nsec) / 1000000000.0;
+	auto now = std::chrono::high_resolution_clock::now();
+	auto nowMs = static_cast<uint64_t>(std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()).count());
+    auto startMs = static_cast<uint64_t>(std::chrono::duration_cast<std::chrono::milliseconds>(tp_start.time_since_epoch()).count());
+    if(running && (nowMs - startMs) > 1.0f / 60.0f) {
 
-    if(running && elapsed > 1.0f/60.0f){
-
-        clock_gettime(CLOCK_MONOTONIC, &start);
+        tp_start = now;
         
         while( SDL_PollEvent( &event ) )
         {

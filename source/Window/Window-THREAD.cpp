@@ -1,4 +1,5 @@
 #include "Window-THREAD.hpp"
+#include <chrono>
 
 Window_THREAD::Window_THREAD(int width, int height) :
     Window(width, height){
@@ -29,18 +30,17 @@ void _windowThread(int width, int height, std::vector<unsigned char> *pixels, bo
     
 	SDL_Event event; 
 
-	struct timespec start, finish;
-	double elapsed = 1000.0;
-	clock_gettime(CLOCK_MONOTONIC, &start);
+	auto now = std::chrono::high_resolution_clock::now();
+	auto startMs = static_cast<uint64_t>(std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()).count());
+
+	double elapsed = 0;
 	while(*running){
 
-		clock_gettime(CLOCK_MONOTONIC, &finish);
-		elapsed = (finish.tv_sec - start.tv_sec);
-		elapsed += (finish.tv_nsec - start.tv_nsec) / 1000000000.0;
+		now = std::chrono::high_resolution_clock::now();
+		auto nowMs = static_cast<uint64_t>(std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()).count());
 		
-		if(elapsed > 1.0/60.0){
-			clock_gettime(CLOCK_MONOTONIC, &start);
-			
+		if(nowMs - startMs > 1.0/60.0){
+			startMs = nowMs;
 			while( SDL_PollEvent( &event ) )
 			{
 				if( ( SDL_QUIT == event.type ) ||
