@@ -61,7 +61,7 @@ void ViewPlane::set_samples(const int samples){
 		sampler_ptr = NULL;
 	}
 	if(samples > 1){
-		sampler_ptr = new MultiJittered(samples);
+		sampler_ptr = new Jittered(samples);
 		this->num_samples = samples;
 	}
 	else{
