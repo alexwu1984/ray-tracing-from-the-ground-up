@@ -10,7 +10,7 @@ void World::build(){
 	background_color = black;
 
 	Ambient* ambient_ptr = new Ambient;
-	ambient_ptr->set_ls(1);
+	ambient_ptr->set_color(1);
 	set_ambient_light(ambient_ptr);
 
 	tracer_ptr = new RayCast(this);
@@ -26,10 +26,10 @@ void World::build(){
 	RGBColor light_purple(0.65, 0.3, 1);
 	RGBColor dark_purple(0.5, 0, 1);
 
-	ThinLens* pinhole_ptr = new ThinLens(Point3D(10, 60, 60), Point3D(0, -10, -100));
-	pinhole_ptr->set_distance(100);
+	ThinLens* pinhole_ptr = new ThinLens(Point3D(10, 60, 30), Point3D(0, -10, -60));
+	pinhole_ptr->set_view_distance(100);
 	pinhole_ptr->set_sampler(new Jittered(100, 100));
-	pinhole_ptr->set_lens_radius(0);
+	pinhole_ptr->set_lens_radius(1.0);
 	pinhole_ptr->set_focal_dist(60);
 	pinhole_ptr->compute_uvw();
 	set_camera(pinhole_ptr);
@@ -69,7 +69,15 @@ void World::build(){
     plane->set_material(matte->clone(brown));
     add_object(plane);	
 
-	// triangle = new Triangle(Point3D(-20, 0, 0), Point3D(20, 0, 25), Point3D(0, 50, 0));
-	// triangle->set_material(matte->clone(red));
-	// add_object(triangle);
+	triangle = new Triangle(Point3D(-20, 0, 0), Point3D(20, 0, 25), Point3D(0, 50, 0));
+	triangle->set_material(matte->clone(red));
+	add_object(triangle);
+
+	Box* box_ptr = new Box(Point3D(-40, 0, -10), Point3D(-25, 30, 30));
+	box_ptr->set_material(matte->clone(red));
+	add_object(box_ptr);
+
+	//triangle = new Triangle(Point3D(-60, 0, 0), Point3D(-40, 0, 25), Point3D(-20, 50, 0));
+	//triangle->set_material(matte->clone(red));
+	//add_object(triangle);
 }
