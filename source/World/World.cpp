@@ -56,7 +56,7 @@
 #include "../Utilities/Maths.hpp"
 
 // build functions
-#include "../build/BuildSingleSphere.hpp"
+//#include "../build/BuildSingleSphere.hpp"
 //#include "../build/BuildSpheresQueue.hpp"
 //#include "../build/BuildSingleSphereLight.hpp"
 //#include "../build/BuildShadedTest.hpp"
@@ -71,7 +71,7 @@
 //#include "../build/BuildSimpleMesh.hpp"
 //#include "../build/BuildBBCoverPic.hpp"
 //#include "../build/BuildBBCoverPicLight.hpp"
-//#include "../build/BuildMultipleObjects.hpp"
+#include "../build/BuildMultipleObjects.hpp"
 //#include "../build/BuildSinusoid.hpp"
 //#include "../build/BuildHorizontalPlane.hpp"
 

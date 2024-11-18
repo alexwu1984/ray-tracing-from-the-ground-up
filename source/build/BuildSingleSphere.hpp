@@ -5,7 +5,7 @@ void World::build(void) {
 	vp.set_vres(200);
 	vp.set_pixel_size(1);
 	vp.set_gamma(1.0);
-	vp.set_samples(1);
+	vp.set_samples(16);
 
 	Ambient* ambient_light = new Ambient();
 	ambient_light->set_color(1, 1, 1);
