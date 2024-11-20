@@ -25,6 +25,7 @@
     <ClCompile Include="BRDF\PerfectSpecular.cpp" />
     <ClCompile Include="Cameras\Camera.cpp" />
     <ClCompile Include="Cameras\Orthographic.cpp" />
+    <ClCompile Include="Cameras\Perspective.cpp" />
     <ClCompile Include="Cameras\Pinhole.cpp" />
     <ClCompile Include="Cameras\ThinLens.cpp" />
     <ClCompile Include="GeometricObjects\BBox.cpp" />
@@ -104,6 +105,7 @@
     <ClInclude Include="build\BuildSpheresQueue.hpp" />
     <ClInclude Include="Cameras\Camera.hpp" />
     <ClInclude Include="Cameras\Orthographic.hpp" />
+    <ClInclude Include="Cameras\Perspective.hpp" />
     <ClInclude Include="Cameras\Pinhole.hpp" />
     <ClInclude Include="Cameras\ThinLens.hpp" />
     <ClInclude Include="GeometricObjects\BBox.hpp" />

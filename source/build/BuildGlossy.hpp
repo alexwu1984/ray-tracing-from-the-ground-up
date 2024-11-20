@@ -44,14 +44,14 @@ void World::build(void){
 	phong_ptr2->set_kd(0.75);
 	phong_ptr2->set_cd(RGBColor(0.75, 0.25, 0));   	// orange
 	phong_ptr2->set_ks(0.25);
-	phong_ptr2->set_exp(500);
+	phong_ptr2->set_exp(4);
 	
 	Phong* phong_ptr3 = new Phong;			
 	phong_ptr3->set_ka(0.4); 
 	phong_ptr3->set_kd(0.75);
 	phong_ptr3->set_cd(RGBColor(1, 0.5, 1));			// mauve
 	phong_ptr3->set_ks(0.25);
-	phong_ptr3->set_exp(4);
+	phong_ptr3->set_exp(10);
 	
 	Phong* phong_ptr4 = new Phong;			
 	phong_ptr4->set_ka(0.15); 

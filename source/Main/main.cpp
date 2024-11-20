@@ -3,6 +3,7 @@
 
 int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmdshow)
 {
+    srand((unsigned)time(NULL));
     World w;
     w.build();
     debug_print("Build finished.\n");

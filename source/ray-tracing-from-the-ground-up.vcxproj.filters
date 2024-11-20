@@ -192,6 +192,9 @@
     <ClCompile Include="World\World.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Cameras\Perspective.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BRDF\BRDF.hpp">
@@ -429,6 +432,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="World\World.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cameras\Perspective.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

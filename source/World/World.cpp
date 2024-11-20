@@ -62,7 +62,7 @@
 //#include "../build/BuildShadedTest.hpp"
 //#include "../build/BuildBox.hpp"
 //#include "../build/BuildSphereGrid.hpp"
-//#include "../build/BuildGlossy.hpp"
+#include "../build/BuildGlossy.hpp"
 //#include "../build/BuildShadowsTest.hpp"
 //#include "../build/BuildAmbientOcclusion.hpp"
 //#include "../build/BuildAreaLight.hpp"
@@ -71,7 +71,7 @@
 //#include "../build/BuildSimpleMesh.hpp"
 //#include "../build/BuildBBCoverPic.hpp"
 //#include "../build/BuildBBCoverPicLight.hpp"
-#include "../build/BuildMultipleObjects.hpp"
+//#include "../build/BuildMultipleObjects.hpp"
 //#include "../build/BuildSinusoid.hpp"
 //#include "../build/BuildHorizontalPlane.hpp"
 

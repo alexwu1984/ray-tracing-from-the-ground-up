@@ -55,14 +55,21 @@ void GlossySpecular::set_cd(const RGBColor cd){
 }
 
 RGBColor GlossySpecular::f(const ShadeRec& sr, const Vector3D& wo, const Vector3D& wi) const{
-    RGBColor L;
-    float ndotwi = sr.normal*wi;
-    Vector3D r(-wi + 2.0*sr.normal*ndotwi);
-    float rdotwo = r*wo;
-    if(rdotwo > 0.0){
-        L = cd*kd*pow(rdotwo, E);
-    }
-    return (L);
+	RGBColor L;
+	float ndotwi = sr.normal * wi;
+	Vector3D r(-wi + 2.0 * sr.normal * ndotwi);
+	float rdotwo = r * wo;
+	if (rdotwo > 0.0) {
+		L = cd * kd * pow(rdotwo, E);
+	}
+	return (L);
+ //   RGBColor L;
+ //   Vector3D h = (wi + wo).hat();
+ //   float ndoth = sr.normal * h;
+	//if (ndoth > 0.0) {
+	//	L = cd * kd * pow(ndoth, E);
+	//}
+	//return (L);
 }
 
 RGBColor GlossySpecular::rho(const ShadeRec& sr, const Vector3D& wo) const{

@@ -75,7 +75,7 @@ void Pinhole::render_scene(World& w){
 }
 
 Vector3D Pinhole::ray_direction(const Point2D& pixel_point) const {
-    Vector3D dir = pixel_point.x*u + pixel_point.y*v - d*w;
-    dir.normalize();
-    return dir;
+	Vector3D dir = pixel_point.x * u + pixel_point.y * v - d * w;
+	dir.normalize();
+	return dir;
 }

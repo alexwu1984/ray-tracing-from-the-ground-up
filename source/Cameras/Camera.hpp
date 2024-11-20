@@ -35,4 +35,5 @@ public:
 
     void set_exposure_time(const float exposure_t);
     float get_exposure_time() const;
+
 };

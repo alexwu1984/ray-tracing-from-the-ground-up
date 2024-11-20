@@ -5,7 +5,7 @@ void World::build(void) {
 	vp.set_pixel_size(0.5);
 	vp.set_sampler(new Regular(16));
 	background_color = RGBColor(1);
-	tracer_ptr = new MultipleObjects(this);
+	tracer_ptr = new RayCast(this);
 
 	/* 
 	Pinhole* pinhole_ptr = new Pinhole(Point3D(50, 0, 100), Point3D(-10, 0, -10));
@@ -17,7 +17,7 @@ void World::build(void) {
 
 	ThinLens* thin_len = new ThinLens(Point3D(0, 0, 100), Point3D(0, 0, -100));
 	thin_len->set_sampler(new Jittered(100));
-	thin_len->set_distance(100);
+	thin_len->set_view_distance(100);
 	thin_len->set_focal_dist(80);
 	thin_len->set_up(Vector3D(0, 1, 0));
 	thin_len->set_lens_radius(2);
