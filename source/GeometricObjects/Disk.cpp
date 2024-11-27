@@ -5,13 +5,15 @@ Disk::Disk(Material* material_p)
     , center(0)
     , normal(0)
     , radius(0)
+    , sampler_ptr(new Regular(1))
 {}
 
 Disk::Disk(Point3D center_, Normal normal_, float radius_, Material* material_p)
     : GeometricObject(material_p)
     , center(center_)
     , normal(normal_)
-    , radius(radius_){
+    , radius(radius_)
+    , sampler_ptr(new Regular(1)) {
     normal.normalize();
 }
 
@@ -21,6 +23,20 @@ Disk::Disk(const Disk& disk)
     , normal(disk.normal)
     , radius(disk.radius){     
     normal.normalize();
+	if (disk.sampler_ptr) {
+		sampler_ptr = disk.sampler_ptr->clone();
+	}
+	else {
+		sampler_ptr = new Regular(1);
+	}
+}
+
+Disk::~Disk()
+{
+	if (sampler_ptr) {
+		delete sampler_ptr;
+		sampler_ptr = NULL;
+	}
 }
 
 Disk& Disk::operator=(const Disk& rhs){
@@ -32,6 +48,12 @@ Disk& Disk::operator=(const Disk& rhs){
     normal = rhs.normal;
     normal.normalize();
     radius = rhs.radius;
+	if (rhs.sampler_ptr) {
+		sampler_ptr = rhs.sampler_ptr->clone();
+	}
+	else {
+		sampler_ptr = new Regular(1);
+	}
     return(*this);
 }
 
@@ -77,4 +99,25 @@ void Disk::set_normal(const Normal normal_){
 
 Normal Disk::get_normal() const{
     return normal;
+}
+
+void Disk::set_sampler(Sampler* sampler)
+{
+	if (sampler_ptr) {
+		delete sampler_ptr;
+	}
+	sampler_ptr = sampler;
+    if (sampler_ptr)
+        sampler_ptr->map_samples_to_unit_disk();
+}
+
+Point3D Disk::sample()
+{
+	Point2D sample_point = sampler_ptr->sample_unit_disk();
+	return (center + sample_point.x * radius + sample_point.y * radius);
+}
+
+float Disk::pdf(const ShadeRec& sr)
+{
+    return 1.f / PI;
 }

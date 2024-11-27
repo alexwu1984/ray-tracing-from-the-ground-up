@@ -30,6 +30,11 @@ void World::build(void) {
 	rectangle_ptr->set_sampler(sampler_ptr);
 	add_object(rectangle_ptr);
 
+	//Disk* rectangle_ptr = new Disk(p0,normal,8);
+	//rectangle_ptr->set_material(emissive_ptr);
+	//rectangle_ptr->set_sampler(sampler_ptr);
+	//add_object(rectangle_ptr);
+
 	
 	AreaLight* area_light_ptr = new AreaLight;
 	area_light_ptr->set_object(rectangle_ptr);

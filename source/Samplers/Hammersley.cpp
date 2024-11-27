@@ -1,6 +1,3 @@
-#ifndef __REGULAR__
-#define __REGULAR__
-
 //  Copyright (C) Kevin Suffern 2000-2007.
 //  This C++ code is for non-commercial purposes only.
 //  This C++ code is licensed under the GNU General Public License Version 2.
@@ -13,30 +10,32 @@
 //  This C++ code is licensed under the GNU General Public License Version 2.
 //  See the file COPYING.txt for the full license.
 
-#include "Sampler.hpp"
+#include "Hammersley.h"
 
-class Regular : public Sampler {
-public:
+#include "../Utilities/Maths.h"
 
-    Regular() = delete;
+Hammersley::Hammersley(const int num) : Sampler(num) { generate_samples(); }
 
-    explicit Regular(const int num);
+Hammersley* Hammersley::clone() const { return new Hammersley(*this); }
 
-    ~Regular() = default;
+float Hammersley::phi(int j) {
+    float x = 0.0f;
+    float f = 0.5f;
 
-    Regular(const Regular& r) = default;
+    while (j) {
+        x += f * (float)(j % 2);
+        j /= 2;
+        f *= 0.5;
+    }
 
-    Regular(Regular&& r) = default;
+    return x;
+}
 
-    Regular& operator=(const Regular& rhs) = default;
-
-    Regular& operator=(Regular&& rhs) = default;
-
-    virtual Regular* clone() const override;
-
-private:
-
-    virtual void generate_samples() override;
-};
-
-#endif
+void Hammersley::generate_samples() {
+    for (int p = 0; p < num_sets; p++) {
+        for (int j = 0; j < num_samples; j++) {
+            Point2D pv((float)j / (float)num_samples, (float)phi(j));
+            samples.push_back(pv);
+        }
+    }
+}

@@ -2,6 +2,7 @@
 #include "../Samplers/MultiJittered.hpp"
 #include "../Utilities/ShadeRec.hpp"
 #include "../World/World.hpp"
+#include "../Samplers/Regular.hpp"
 
 AmbientOccluder::AmbientOccluder()
     : u(0)

@@ -1,6 +1,3 @@
-#ifndef __REGULAR__
-#define __REGULAR__
-
 //  Copyright (C) Kevin Suffern 2000-2007.
 //  This C++ code is for non-commercial purposes only.
 //  This C++ code is licensed under the GNU General Public License Version 2.
@@ -12,31 +9,15 @@
 //  This C++ code is for non-commercial purposes only.
 //  This C++ code is licensed under the GNU General Public License Version 2.
 //  See the file COPYING.txt for the full license.
+#pragma once
+#include <cstdlib>
 
-#include "Sampler.hpp"
+inline void set_rand_seed(const int seed) { srand(seed); }
 
-class Regular : public Sampler {
-public:
+inline int rand_int() { return rand(); }
 
-    Regular() = delete;
+inline float rand_float() { return static_cast<float>(rand()) / static_cast<float>(RAND_MAX); }
 
-    explicit Regular(const int num);
+inline float rand_float(int l, float h) { return rand_float() * (h - l) + l; }
 
-    ~Regular() = default;
-
-    Regular(const Regular& r) = default;
-
-    Regular(Regular&& r) = default;
-
-    Regular& operator=(const Regular& rhs) = default;
-
-    Regular& operator=(Regular&& rhs) = default;
-
-    virtual Regular* clone() const override;
-
-private:
-
-    virtual void generate_samples() override;
-};
-
-#endif
+inline int rand_int(int l, int h) { return (int)(rand_float(0, (float)h - (float)l + 1.0f) + (float)l); }

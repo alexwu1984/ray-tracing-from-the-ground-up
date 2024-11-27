@@ -22,7 +22,7 @@
 #include "../Light/Light.hpp"
 #include "../Light/Ambient.hpp"
 
-class World {	
+class World {
 public:
 	ViewPlane vp;
 	RGBColor background_color;
@@ -32,23 +32,24 @@ public:
 	Camera* camera;
 	Light* ambient_ptr;
 
-	std::vector<GeometricObject*> objects;		
+	std::vector<GeometricObject*> objects;
 	std::vector<Light*> lights;
 
 public:
-	World();												
+	World();
 	~World();
-							
+
 	void add_object(GeometricObject* object_ptr);
 	void add_light(Light* light_ptr);
-	
+
 	void build();
-				
+
 	RGBColor max_to_one(const RGBColor& c) const;
 	RGBColor clamp_to_color(const RGBColor& c) const;
-	
+
 	void display_pixel(const int row, const int column, const RGBColor& pixel_color) const;
 	ShadeRec hit_objects(const Ray& ray, const float tmin_ = kHugeValue);
+	ShadeRec hit_bare_bones_objects(const Ray& ray);
 
 	void set_camera(Camera* cam_pt);
 	void openWindow(int w, int h, bool thread = true);

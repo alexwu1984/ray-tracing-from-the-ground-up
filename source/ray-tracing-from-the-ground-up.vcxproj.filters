@@ -428,13 +428,13 @@
     <ClInclude Include="Window\Window-THREAD.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="World\ViewPlane.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="World\World.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Cameras\Perspective.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="World\ViewPlane.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

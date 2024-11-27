@@ -1,5 +1,5 @@
-#ifndef __REGULAR__
-#define __REGULAR__
+#ifndef __HAMMERSLEY__
+#define __HAMMERSLEY__
 
 //  Copyright (C) Kevin Suffern 2000-2007.
 //  This C++ code is for non-commercial purposes only.
@@ -13,26 +13,28 @@
 //  This C++ code is licensed under the GNU General Public License Version 2.
 //  See the file COPYING.txt for the full license.
 
-#include "Sampler.hpp"
+#include "Sampler.h"
 
-class Regular : public Sampler {
+class Hammersley : public Sampler {
 public:
 
-    Regular() = delete;
+    Hammersley() = delete;
 
-    explicit Regular(const int num);
+    explicit Hammersley(const int num);
 
-    ~Regular() = default;
+    ~Hammersley() = default;
 
-    Regular(const Regular& r) = default;
+    Hammersley(const Hammersley& r) = default;
 
-    Regular(Regular&& r) = default;
+    Hammersley(Hammersley&& r) = default;
 
-    Regular& operator=(const Regular& rhs) = default;
+    Hammersley& operator=(const Hammersley& rhs) = default;
 
-    Regular& operator=(Regular&& rhs) = default;
+    Hammersley& operator=(Hammersley&& rhs) = default;
 
-    virtual Regular* clone() const override;
+    virtual Hammersley* clone() const override;
+
+    float phi(int j);
 
 private:
 

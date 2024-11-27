@@ -3,6 +3,7 @@
 #include "../Samplers/Sampler.hpp"
 #include "../Utilities/Vector3D.hpp"
 #include "../Utilities/ShadeRec.hpp"
+#include "../Utilities/Constants.hpp"
 
 class BRDF{
 public:

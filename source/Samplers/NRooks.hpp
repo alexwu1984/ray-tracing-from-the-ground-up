@@ -1,15 +1,44 @@
-#pragma once
+#ifndef __N_ROOKS__
+#define __N_ROOKS__
+
+//  Copyright (C) Kevin Suffern 2000-2007.
+//  This C++ code is for non-commercial purposes only.
+//  This C++ code is licensed under the GNU General Public License Version 2.
+//  See the file COPYING.txt for the full license.
+
+//  Copyright notice for changes since the originally published version:
+//  Copyright (C) Eduárd Mándy 2019-2021
+//  Though this C++ code was change in a large measure it still has the original copyright notice.
+//  This C++ code is for non-commercial purposes only.
+//  This C++ code is licensed under the GNU General Public License Version 2.
+//  See the file COPYING.txt for the full license.
 
 #include "Sampler.hpp"
 
-class NRooks: public Sampler {
+class NRooks : public Sampler {
 public:
-	NRooks(const int num_samples = 1, const int m = 50);	
-	NRooks(const NRooks& nr);					
-	NRooks& operator= (const NRooks& rhs);				
-	virtual NRooks*	clone() const;			
-	virtual ~NRooks();
-		
-private:		
-	virtual void generate_samples(void);						
+
+    NRooks() = delete;
+
+    explicit NRooks(const int num_samples);
+
+    explicit NRooks(const int num_samples, const int m);
+
+    ~NRooks() = default;
+
+    NRooks(const NRooks& r) = default;
+
+    NRooks(NRooks&& r) = default;
+
+    NRooks& operator=(const NRooks& rhs) = default;
+
+    NRooks& operator=(NRooks&& rhs) = default;
+
+    virtual NRooks* clone() const override;
+
+private:
+
+    virtual void generate_samples() override;
 };
+
+#endif

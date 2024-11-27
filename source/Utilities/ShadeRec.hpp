@@ -8,6 +8,7 @@
 
 class Material;
 class World;	// only need a forward class declaration as the World data member is a reference
+class GeometricObject;
 
 class ShadeRec {
 public:	
@@ -20,6 +21,8 @@ public:
 	Ray ray;
 	int depth;
 	float t;
+	RGBColor color;
+	GeometricObject* hit_object = nullptr;
 
 	ShadeRec(World& wr);			// constructor
 	ShadeRec(const ShadeRec& sr);	// copy constructor

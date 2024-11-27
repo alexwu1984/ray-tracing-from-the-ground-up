@@ -1,6 +1,3 @@
-#ifndef __REGULAR__
-#define __REGULAR__
-
 //  Copyright (C) Kevin Suffern 2000-2007.
 //  This C++ code is for non-commercial purposes only.
 //  This C++ code is licensed under the GNU General Public License Version 2.
@@ -13,30 +10,18 @@
 //  This C++ code is licensed under the GNU General Public License Version 2.
 //  See the file COPYING.txt for the full license.
 
-#include "Sampler.hpp"
+#include "PureRandom.h"
 
-class Regular : public Sampler {
-public:
+#include "../Utilities/Random.h"
 
-    Regular() = delete;
+PureRandom::PureRandom(const int num) : Sampler(num) { generate_samples(); }
 
-    explicit Regular(const int num);
+PureRandom* PureRandom::clone() const { return new PureRandom(*this); }
 
-    ~Regular() = default;
-
-    Regular(const Regular& r) = default;
-
-    Regular(Regular&& r) = default;
-
-    Regular& operator=(const Regular& rhs) = default;
-
-    Regular& operator=(Regular&& rhs) = default;
-
-    virtual Regular* clone() const override;
-
-private:
-
-    virtual void generate_samples() override;
-};
-
-#endif
+void PureRandom::generate_samples() {
+    for (int p = 0; p < num_sets; p++) {
+        for (int q = 0; q < num_samples; q++) {
+            samples.push_back(Point2D(rand_float(), rand_float()));
+        }
+    }
+}

@@ -1,5 +1,5 @@
-#ifndef __REGULAR__
-#define __REGULAR__
+#ifndef __PURE_RANDOM__
+#define __PURE_RANDOM__
 
 //  Copyright (C) Kevin Suffern 2000-2007.
 //  This C++ code is for non-commercial purposes only.
@@ -13,26 +13,26 @@
 //  This C++ code is licensed under the GNU General Public License Version 2.
 //  See the file COPYING.txt for the full license.
 
-#include "Sampler.hpp"
+#include "Sampler.h"
 
-class Regular : public Sampler {
+class PureRandom : public Sampler {
 public:
 
-    Regular() = delete;
+    PureRandom() = delete;
 
-    explicit Regular(const int num);
+    explicit PureRandom(const int num);
 
-    ~Regular() = default;
+    ~PureRandom() = default;
 
-    Regular(const Regular& r) = default;
+    PureRandom(const PureRandom& r) = default;
 
-    Regular(Regular&& r) = default;
+    PureRandom(PureRandom&& r) = default;
 
-    Regular& operator=(const Regular& rhs) = default;
+    PureRandom& operator=(const PureRandom& rhs) = default;
 
-    Regular& operator=(Regular&& rhs) = default;
+    PureRandom& operator=(PureRandom&& rhs) = default;
 
-    virtual Regular* clone() const override;
+    virtual PureRandom* clone() const override;
 
 private:
 

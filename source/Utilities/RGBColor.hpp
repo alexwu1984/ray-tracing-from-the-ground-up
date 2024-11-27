@@ -2,30 +2,85 @@
 
 #include <math.h>
 
-class RGBColor {	
+class RGBColor {
 public:
-	float r; 
-	float g; 
-	float b;									
-				
-public:	
-	RGBColor();
-	RGBColor(float c);
-	RGBColor(float r, float g, float b);
-	RGBColor(const RGBColor& c);
-	~RGBColor();
 
-	RGBColor& operator= (const RGBColor& rhs);		// assignment operator
-	RGBColor operator+ (const RGBColor& c) const;	// addition
-	RGBColor& operator+= (const RGBColor& c);		// compound addition
-	RGBColor operator* (const float a) const;		// multiplication by a float on the right
-	RGBColor& operator*= (const float a);			// compound multiplication by a float on the right
-	RGBColor operator/ (const float a) const;		// division by a float
-	RGBColor& operator/= (const float a); 			// compound division by a float
-	RGBColor operator* (const RGBColor& c) const; 	// component-wise multiplication
-	bool operator== (const RGBColor& c) const;		// are two RGBColours the same?
-	RGBColor powc(float p) const;					// raise components to a power
-	float average(void) const;						// the average of the components
+	float r = 0.0f;
+	float g = 0.0f;
+	float b = 0.0f;
+
+	RGBColor() = default;
+	explicit RGBColor(float c);
+	explicit RGBColor(float _r, float _g, float _b);
+
+	RGBColor operator+(const RGBColor& c) const;
+
+	RGBColor& operator+=(const RGBColor& c);
+
+	RGBColor operator*(const float a) const;
+
+	RGBColor& operator*=(const float a);
+
+	RGBColor operator/(const float a) const;
+
+	RGBColor& operator/=(const float a);
+
+	RGBColor operator*(const RGBColor& c) const;
+
+	bool operator==(const RGBColor& c) const;
+
+	RGBColor powc(float p) const;
+
+	float average() const;
+
+	/*static*/ static const RGBColor black;
+	/*static*/ static const RGBColor white;
+	/*static*/ static const RGBColor red;
+	/*static*/ static const RGBColor yellow;
+	/*static*/ static const RGBColor brown;
+	/*static*/ static const RGBColor darkGreen;
+	/*static*/ static const RGBColor orange;
+	/*static*/ static const RGBColor green;
+	/*static*/ static const RGBColor lightGreen;
+	/*static*/ static const RGBColor darkYellow;
+	/*static*/ static const RGBColor lightPurple;
+	/*static*/ static const RGBColor darkPurple;
+	/*static*/ static const RGBColor grey;
 };
 
-RGBColor operator* (const float a, const RGBColor& c);
+inline RGBColor RGBColor::operator+(const RGBColor& c) const { return RGBColor(r + c.r, g + c.g, b + c.b); }
+
+inline RGBColor& RGBColor::operator+=(const RGBColor& c) {
+	r += c.r;
+	g += c.g;
+	b += c.b;
+	return *this;
+}
+
+inline RGBColor RGBColor::operator*(const float a) const { return RGBColor(r * a, g * a, b * a); }
+
+inline RGBColor& RGBColor::operator*=(const float a) {
+	r *= a;
+	g *= a;
+	b *= a;
+	return *this;
+}
+
+inline RGBColor RGBColor::operator/(const float a) const { return RGBColor(r / a, g / a, b / a); }
+
+inline RGBColor& RGBColor::operator/=(const float a) {
+	r /= a;
+	g /= a;
+	b /= a;
+	return *this;
+}
+
+inline RGBColor RGBColor::operator*(const RGBColor& c) const { return RGBColor(r * c.r, g * c.g, b * c.b); }
+
+inline bool RGBColor::operator==(const RGBColor& c) const { return r == c.r && g == c.g && b == c.b; }
+
+inline float RGBColor::average() const { return 0.333333333333f * (r + g + b); }
+
+RGBColor operator*(const float a, const RGBColor& c);
+
+inline RGBColor operator*(const float a, const RGBColor& c) { return RGBColor(a * c.r, a * c.g, a * c.b); }

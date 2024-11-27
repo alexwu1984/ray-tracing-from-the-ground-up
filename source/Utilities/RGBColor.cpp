@@ -1,100 +1,22 @@
 #include "RGBColor.hpp"
 
-// -------------------------------------------------------- default constructor
-RGBColor::RGBColor()
-	: r(0.0), g(0.0), b(0.0) {}
+RGBColor::RGBColor(float c) : r(c), g(c), b(c) {}
 
-// -------------------------------------------------------- constructor
-RGBColor::RGBColor(float c)
-	: r(c), g(c), b(c) {}
+RGBColor::RGBColor(float _r, float _g, float _b) : r(_r), g(_g), b(_b) {}
 
-// -------------------------------------------------------- constructor
-RGBColor::RGBColor(float _r, float _g, float _b)	
-	: r(_r), g(_g), b(_b) {}
-
-// -------------------------------------------------------- copy constructor
-RGBColor::RGBColor(const RGBColor& c)
-	: r(c.r), g(c.g), b(c.b) {} 				 
-
-// -------------------------------------------------------- destructor
-RGBColor::~RGBColor() {}
-
-// --------------------------------------------------------assignment operator
-RGBColor& RGBColor::operator= (const RGBColor& rhs) {
-	if (this == &rhs)
-		return (*this);
-
-	r = rhs.r; g = rhs.g; b = rhs.b;
-
-	return (*this);
-}
-
-// -------------------------------------------------------- powc
-// raise each component to the specified power
 // used for color filtering in Chapter 28
-RGBColor RGBColor::powc(float p) const {
-	return (RGBColor(pow(r, p), pow(g, p), pow(b, p)));
-}
+RGBColor RGBColor::powc(float p) const { return RGBColor(powf(r, p), powf(g, p), powf(b, p)); }
 
-// ----------------------------------------------------------------------- operator+
-// addition of two colors
-RGBColor RGBColor::operator+ (const RGBColor& c) const {
-	return (RGBColor(r + c.r, g + c.g, b + c.b));
-}
-
-// ----------------------------------------------------------------------- operator+=
-// compound addition of two colors
-RGBColor& RGBColor::operator+= (const RGBColor& c) {
-	r += c.r; g += c.g; b += c.b;
-    return (*this);
-}
-
-// ----------------------------------------------------------------------- operator*
-// multiplication by a float on the right
-RGBColor RGBColor::operator* (const float a) const {
-	return (RGBColor (r * a, g * a, b * a));	
-}
-
-// ----------------------------------------------------------------------- operator*=
-// compound multiplication by a float on the right
-RGBColor& RGBColor::operator*= (const float a) {
-	r *= a; g *= a; b *= a;
-	return (*this);
-}
-
-// ----------------------------------------------------------------------- operator/
-// division by float
-RGBColor RGBColor::operator/ (const float a) const {
-	return (RGBColor (r / a, g / a, b / a));
-}
-
-// ----------------------------------------------------------------------- operator/=
-// compound division by float
-RGBColor& RGBColor::operator/= (const float a) {	
-	r /= a; g /= a; b /= a;
-	return (*this);
-}
-
-// ----------------------------------------------------------------------- operator*
-// component-wise multiplication of two colors
-RGBColor RGBColor::operator* (const RGBColor& c) const {
-	return (RGBColor (r * c.r, g * c.g, b * c.b));
-} 
-
-// ----------------------------------------------------------------------- operator==
-// are two RGBColors the same?
-bool RGBColor::operator== (const RGBColor& c) const {
-	return (r == c.r && g == c.g && b == c.b);
-}
-
-// ----------------------------------------------------------------------- average
-// the average of the three components
-float RGBColor::average(void) const {
-	return (0.333333333333 * (r + g + b));
-}
-
-// ----------------------------------------------------------------------- operator*
-// multiplication by a float on the left
-RGBColor operator* (const float a, const RGBColor& c) {
-	return (RGBColor (a * c.r, a * c.g, a * c.b));	
-}
+const RGBColor RGBColor::black = RGBColor(0.0f);
+const RGBColor RGBColor::white = RGBColor(1.0f);
+const RGBColor RGBColor::red = RGBColor(1.0f, 0.0f, 0.0f);
+const RGBColor RGBColor::yellow = RGBColor(1.0f, 1.0f, 0.0f);
+const RGBColor RGBColor::brown = RGBColor(0.71f, 0.4f, 0.16f);
+const RGBColor RGBColor::darkGreen = RGBColor(0.0f, 0.41f, 0.0f);
+const RGBColor RGBColor::orange = RGBColor(1.0f, 0.75, 0.0f);
+const RGBColor RGBColor::green = RGBColor(0.0f, 0.6f, 0.3f);
+const RGBColor RGBColor::lightGreen = RGBColor(0.65f, 1.0f, 0.3f);
+const RGBColor RGBColor::darkYellow = RGBColor(0.61f, 0.61f, 0.0f);
+const RGBColor RGBColor::lightPurple = RGBColor(0.65f, 0.3f, 1.0f);
+const RGBColor RGBColor::darkPurple = RGBColor(0.5f, 0.0f, 1.0f);
+const RGBColor RGBColor::grey = RGBColor(0.25f);

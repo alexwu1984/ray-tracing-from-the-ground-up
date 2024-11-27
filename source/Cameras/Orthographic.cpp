@@ -1,5 +1,7 @@
 #include "Orthographic.hpp"
 #include "../World/World.hpp"
+#include "../World/ViewPlane.hpp"
+#include "../Samplers/Sampler.hpp"
 
 Orthographic::Orthographic(Point3D eye, Point3D lookat):
     Camera(eye, lookat)

@@ -1,101 +1,49 @@
+//  Copyright (C) Kevin Suffern 2000-2007.
+//  This C++ code is for non-commercial purposes only.
+//  This C++ code is licensed under the GNU General Public License Version 2.
+//  See the file COPYING.txt for the full license.
+
+//  Copyright notice for changes since the originally published version:
+//  Copyright (C) Eduárd Mándy 2019-2021
+//  Though this C++ code was change in a large measure it still has the original copyright notice.
+//  This C++ code is for non-commercial purposes only.
+//  This C++ code is licensed under the GNU General Public License Version 2.
+//  See the file COPYING.txt for the full license.
+
 #include "ViewPlane.hpp"
-							
-ViewPlane::ViewPlane(void)							
-	: 	hres(400), 
-		vres(400),
-		s(1.0),
-		gamma(1.0),
-		inv_gamma(1.0),
-		show_out_of_gamut(false),
-		sampler_ptr(new Regular(1)),
-		num_samples(1),
-		max_depth(0)
-{}
 
-ViewPlane::ViewPlane(const ViewPlane& vp)   
-	:  	hres(vp.hres),  
-		vres(vp.vres), 
-		s(vp.s),
-		gamma(vp.gamma),
-		inv_gamma(vp.inv_gamma),
-		show_out_of_gamut(vp.show_out_of_gamut),
-		sampler_ptr(vp.sampler_ptr->clone()),
-		num_samples(vp.num_samples),
-		max_depth(vp.max_depth)
-{}
+#include "../Samplers/MultiJittered.hpp"
+#include "../Samplers/Regular.hpp"
+#include "../Samplers/Sampler.hpp"
 
-ViewPlane& ViewPlane::operator= (const ViewPlane& rhs) {
-	if (this == &rhs)
-		return (*this);
-		
-	hres 				= rhs.hres;
-	vres 				= rhs.vres;
-	s					= rhs.s;
-	gamma				= rhs.gamma;
-	inv_gamma			= rhs.inv_gamma;
-	show_out_of_gamut	= rhs.show_out_of_gamut;
-	num_samples 		= rhs.num_samples;
-	sampler_ptr 		= rhs.sampler_ptr->clone();
-	max_depth 			= rhs.max_depth;
-	return (*this);
+ViewPlane::~ViewPlane() {
+    if (sampler_ptr) {
+        delete sampler_ptr;
+        sampler_ptr = nullptr;
+    }
 }
 
-ViewPlane::~ViewPlane(void) {
-	if(sampler_ptr){
-		delete sampler_ptr;
-		sampler_ptr = NULL;
-	}
+void ViewPlane::set_samples(const int n) {
+    num_samples = n;
+
+    if (sampler_ptr) {
+        delete sampler_ptr;
+        sampler_ptr = nullptr;
+    }
+
+    if (num_samples > 1) {
+        sampler_ptr = new MultiJittered(num_samples);
+    } else {
+        sampler_ptr = new Regular(1);
+    }
 }
 
-void ViewPlane::set_hres(const int h_res) {
-	hres = h_res;
-}
+void ViewPlane::set_sampler(Sampler* sp) {
+    if (sampler_ptr) {
+        delete sampler_ptr;
+        sampler_ptr = nullptr;
+    }
 
-void ViewPlane::set_vres(const int v_res) {
-	vres = v_res;
-}
-
-void ViewPlane::set_samples(const int samples){
-	if(sampler_ptr != NULL){
-		delete sampler_ptr;
-		sampler_ptr = NULL;
-	}
-	if(samples > 1){
-		sampler_ptr = new Jittered(samples);
-		this->num_samples = samples;
-	}
-	else{
-		sampler_ptr = new Regular(1);
-		this->num_samples = samples;
-	}
-}
-
-void ViewPlane::set_sampler(Sampler* sampler_p){
-	if(sampler_p != NULL){ 
-		if(sampler_p->get_num_samples() != 1){
-			sampler_ptr = sampler_p;
-			num_samples = sampler_p->get_num_samples();
-		}
-		else{
-			delete sampler_p;
-			sampler_p = NULL;
-		}
-	}
-}
-
-void ViewPlane::set_pixel_size(const float size) {
-	s = size;
-}
-
-void ViewPlane::set_gamma(const float g) {
-	gamma = g;
-	inv_gamma = 1.0 / gamma;
-}
-
-void ViewPlane::set_gamut_display(const bool show) {
-	show_out_of_gamut = show;
-}
-
-void ViewPlane::set_max_depth(const int max_d) {
-	max_depth = max_d;
+    num_samples = sp->get_num_samples();
+    sampler_ptr = sp;
 }

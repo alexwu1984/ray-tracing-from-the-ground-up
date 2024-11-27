@@ -6,10 +6,10 @@ Matte::Matte(Lambertian* ambient_brdf_, Lambertian* diffuse_brdf_):
     Material()
 {
     if(ambient_brdf_ == NULL){
-        ambient_brdf = new Lambertian(0,25);
+        ambient_brdf = new Lambertian(0, RGBColor(25.f));
     }
     if(diffuse_brdf_ == NULL){
-        diffuse_brdf = new Lambertian(0,75);
+        diffuse_brdf = new Lambertian(0, RGBColor(75.f));
     }
 }
 
@@ -121,7 +121,7 @@ RGBColor Matte::shade(ShadeRec& sr){
             bool in_shadow = false;
             if(sr.w.lights[j]->get_shadows()){
                 Ray shadowRay(sr.hit_point, wi);
-                in_shadow = sr.w.lights[j]->in_shadow(shadowRay, sr);
+                 in_shadow = sr.w.lights[j]->in_shadow(shadowRay, sr);
             }
             if(!in_shadow) {
                 L += diffuse_brdf->f(sr, wo, wi)*sr.w.lights[j]->L(sr)*ndotwi;
