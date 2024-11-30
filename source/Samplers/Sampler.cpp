@@ -145,7 +145,7 @@ void Sampler::map_samples_to_unit_disk() {
     float r, phi;  // polar coordinates
     Point2D sp;    // sample point on unit disk
 
-    disk_samples.reserve(size);
+    disk_samples.resize(size);
 
     for (int j = 0; j < size; j++) {
         // map sample point to [-1, 1] X [-1,1]
